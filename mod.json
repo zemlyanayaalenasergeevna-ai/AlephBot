@@ -1,0 +1,9 @@
+{
+  "geode": "5.10.1",
+  "gd": {"android": "2.2081", "win": "2.2081", "mac": "2.2081", "ios": "2.2081"},
+  "id": "alena.alephbot",
+  "name": "AlephBot",
+  "version": "v0.9-beta",
+  "developer": "Alena",
+  "description": "Frame-based Geometry Dash macro recorder and player using the AlephBot Universal Replay (.aur) format."
+}
