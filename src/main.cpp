@@ -33,8 +33,8 @@ class $modify(AlephBotPlayLayer, PlayLayer) {
         CCMenu* alephMenu = nullptr;
     };
 
-    bool init(GJGameLevel* level) {
-        if (!PlayLayer::init(level))
+    bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+        if (!PlayLayer::init(level, useReplay, dontCreateObjects))
             return false;
 
         auto winSize = CCDirector::sharedDirector()->getWinSize();
