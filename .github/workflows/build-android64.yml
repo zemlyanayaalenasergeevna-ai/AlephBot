@@ -1,0 +1,29 @@
+name: Build AlephBot - Android64
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+    tags: ["v*"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build AlephBot
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          target: Android64
+          build-config: Release
+      - name: Locate .geode
+        shell: bash
+        run: |
+          set -e
+          FILE=$(find build out -type f -name '*.geode' 2>/dev/null | head -n 1 || true)
+          test -n "$FILE" || { echo "No .geode file found."; exit 1; }
+          mkdir -p artifacts
+          cp "$FILE" artifacts/alena.alephbot.geode
+      - uses: actions/upload-artifact@v4
+        with:
+          name: alena.alephbot-android64
+          path: artifacts/alena.alephbot.geode
+          if-no-files-found: error
